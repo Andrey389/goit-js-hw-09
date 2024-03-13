@@ -63,33 +63,26 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 gallery.innerHTML = createImages(images);
-gallery.addEventListener('click', openClick);
-function openClick(event) {
-  if (event.currentTarget === event.target) {
-    return;
-  }
-  const currentImage = event.target.closest('.gallery-item');
-  const imageSource =
-    currentImage.querySelector('.gallery-image').dataset.source;
-  const image = images.find(({ original }) => original === imageSource);
-  const instance = basicLightbox.create(`
-        <img src="${image.original}" alt="${image.description}" >
-      `);
-  event.preventDefault();
-  instance.show();
-}
+gallery.SimpleLightbox('.gallery a');
+
 function createImages(images) {
   return images
     .map(
       ({ preview, original, description }) =>
         `<li class="gallery-item">
-              <a class="gallery-link" href="${original}">
-                <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}" />
-              </a>
-            </li>`
+        <a class="gallery-link" href="${original}">
+          <img 
+            class="gallery-image" 
+            src="${preview}" 
+            alt="Image ${description}" 
+            />
+        </a>
+      </li>
+      `
     )
     .join('');
 }
