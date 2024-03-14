@@ -67,7 +67,6 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 gallery.innerHTML = createImages(images);
-gallery.SimpleLightbox('.gallery a');
 
 function createImages(images) {
   return images
@@ -86,3 +85,7 @@ function createImages(images) {
     )
     .join('');
 }
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionsDelay: 250,
+});
