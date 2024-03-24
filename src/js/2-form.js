@@ -16,7 +16,6 @@ form.addEventListener('submit', formSubmit);
 const jsn = localStorage.getItem(STORAGE_KEY) ?? '';
 try {
   const data = JSON.parse(jsn);
-  console.log(data);
   form.elements.email.value = data.email;
   textarea.value = data.message;
 } catch {
