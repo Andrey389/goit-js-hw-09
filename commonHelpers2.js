@@ -1,0 +1,2 @@
+import"./assets/styles-f3635d75.js";const a="feedback-form-state",t=document.querySelector(".feedback-form"),o=t.querySelector("textarea");function l(e){e.preventDefault();const s=t.elements.email.value,c=o.value,n=JSON.stringify({email:s,message:c});localStorage.setItem(a,n)}t.addEventListener("submit",l);const m=localStorage.getItem(a)??"";try{const e=JSON.parse(m);t.elements.email.value=e.email,o.value=e.message}catch{console.log("No saved data!")}
+//# sourceMappingURL=commonHelpers2.js.map
